@@ -36,9 +36,9 @@ public class ListMain {
 
         //  List<Person> personList = new ArrayList<>(); //folosit pentru parcurgere si adaugare si stergele la inceput si sf
         List<Person> personList = new LinkedList<>(); //folosit cel mai des cand avem de facut multe stergeri,adaugari in interior lista
-        personList.add(new Unemployed(30, "Mihai"));
-        personList.add(new Hired("Andrei", 35, 2000));
-        personList.add(new Student("UTCN", "Cristi", 20));
+        personList.add(new Unemployed(30, "Mihai", 11111));
+        personList.add(new Hired("Andrei", 35, 2000, 2222));
+        personList.add(new Student("UTCN", "Cristi", 20, 3333));
 
         //   parcurgerePersoanaLista(personList);
         stergereElementLista(personList);

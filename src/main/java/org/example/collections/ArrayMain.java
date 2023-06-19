@@ -11,18 +11,18 @@ public class ArrayMain {
 
         initializareSiParcurgereArrayDePersoane();
 
-        Person person = new Hired("Ana", 30, 2000);
+        Person person = new Hired("Ana", 30, 2000, 1111);
      //   person.getSalar();
 
-        Hired hired =  new Hired("Ana", 30, 2000);
+        Hired hired =  new Hired("Ana", 30, 2000, 2222);
       //  hired.getSalar()
     }
 
     private static void initializareSiParcurgereArrayDePersoane() {
         Person[] persons = new Person[3];
-        persons[0] = new Unemployed(30, "Mihai");
-        persons[1] = new Hired("Andrei", 35, 2000);
-        persons[2] = new Student("UTCN", "Cristi", 20);
+        persons[0] = new Unemployed(30, "Mihai", 111);
+        persons[1] = new Hired("Andrei", 35, 2000, 2222);
+        persons[2] = new Student("UTCN", "Cristi", 20, 3333);
 
         for (Person person: persons) {
             System.out.println(person.getName());
