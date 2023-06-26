@@ -1,15 +1,16 @@
 package org.example.unitTesting;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Banca {
-    private String nume;
+    protected String nume;
 
-    private List<Persoana> clienti;
+    protected List<Persoana> clienti;
 
     public Banca(String nume) {
         this.nume = nume;
-        this.clienti = null;
+        this.clienti = new ArrayList<>();
     }
 
     public String getNume() {
@@ -22,5 +23,9 @@ public class Banca {
 
     public void setClienti(List<Persoana> clienti) {
         this.clienti = clienti;
+    }
+
+    public void adaugaClient(Persoana client) {
+        this.clienti.add(client);
     }
 }

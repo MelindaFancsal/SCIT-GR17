@@ -31,4 +31,13 @@ public class Card {
     public int getNumarCard() {
         return numarCard;
     }
+
+    public boolean esteValid(Date currentDate) {
+        //-1 0 1
+        //a < b -> -1
+        //a == b -> 0
+        //a > b -> 1
+
+        return currentDate.compareTo(expirationDate) <= 0;
+    }
 }

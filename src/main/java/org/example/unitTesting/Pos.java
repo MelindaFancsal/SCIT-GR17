@@ -1,17 +1,17 @@
 package org.example.unitTesting;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Pos {
-    private List<Banca> bancaList;
+    private final List<Banca> bancaList;
 
-    private Card card;
-
-    public Pos(List<Banca> bancaList) {
-        this.bancaList = bancaList;
-        card = null;
+    public Pos() {
+        bancaList = new ArrayList<>();
     }
-
+    public void cunoasteBanca(Banca banca) {
+        bancaList.add(banca);
+    }
     public Chitanta scoateBani(Card card, int sumaRetrasa) {
         Chitanta chitanta = new Chitanta();
 
@@ -25,7 +25,7 @@ public class Pos {
                         if (cardClient.getIban().equals(card.getIban())) {
                             contBancar.scoateBanii(sumaRetrasa);
 
-                            chitanta.setMesaj(sumaRetrasa+ "  " +contBancar.getSum());
+                            chitanta.setMesaj(sumaRetrasa + " " + contBancar.getSum());
                         }
                     }
                 }
@@ -33,7 +33,12 @@ public class Pos {
             }
 
         }
+
+        return chitanta;
     }
 
 
+    public List<Banca> getListaBancaCunoscute() {
+        return bancaList;
+    }
 }

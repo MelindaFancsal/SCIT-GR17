@@ -1,5 +1,6 @@
 package org.example.unitTesting;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ContBancar {
@@ -10,7 +11,7 @@ public class ContBancar {
     public ContBancar(String iban) {
         this.iban = iban;
         sum = 0;
-        cardList = null;
+        cardList = new ArrayList<>();
     }
 
     public void adaugBani(int money) {

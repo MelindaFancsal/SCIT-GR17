@@ -1,5 +1,7 @@
 package org.example.unitTesting;
 
+import java.util.prefs.BackingStoreException;
+
 public class Main {
 
     /*
@@ -11,6 +13,11 @@ public class Main {
      - Card, Bancomat, ContBancar, Chitanta, Persoana
      Pas 2:
      - compozitie
-
      */
+
+    public static void main(String[] args) {
+
+        Banca banca = new Banca("BT");
+     //   banca.clienti
+    }
 }

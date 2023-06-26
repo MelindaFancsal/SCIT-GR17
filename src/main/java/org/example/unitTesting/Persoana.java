@@ -1,13 +1,14 @@
 package org.example.unitTesting;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Persoana {
     private String nume;
     private List<ContBancar> conturiBancare;
 
-    public Persoana(String nume, List<ContBancar> conturiBancare) {
-        this.conturiBancare = conturiBancare;
+    public Persoana(String nume) {
+        this.conturiBancare = new ArrayList<>();
         this.nume = nume;
     }
 
@@ -23,7 +24,7 @@ public class Persoana {
         return conturiBancare;
     }
 
-    public void addCard(ContBancar contBancar) {
+    public void addContBancar(ContBancar contBancar) {
         conturiBancare.add(contBancar);
     }
 
