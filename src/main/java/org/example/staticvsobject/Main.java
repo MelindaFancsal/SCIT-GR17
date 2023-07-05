@@ -1,6 +1,6 @@
 package org.example.staticvsobject;
 
-import org.example.unitTesting.Banca;
+import org.example.recap.*;
 
 public class Main {
     /*
