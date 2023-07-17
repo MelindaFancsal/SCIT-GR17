@@ -133,7 +133,7 @@ public class IOMain {
         }
     }
 
-    private static void byteStreamExample() throws IOException {
+    private static void byteStreamExample() {
 //        Instant startNonBuffer = Instant.now();
 //
 //        FileInputStream nonBufferedReader = new FileInputStream("src/main/resources/java.png");
@@ -148,16 +148,22 @@ public class IOMain {
 
 
         Instant start = Instant.now();
-        BufferedInputStream bufferedReader = new BufferedInputStream(new FileInputStream("src/main/resources/java.png"));
-        BufferedOutputStream bufferedWriter = new BufferedOutputStream(new FileOutputStream("src/main/resources/copyJava.png", true));
 
-        copy(bufferedReader, bufferedWriter);
+        try( BufferedInputStream bufferedReader = new BufferedInputStream(new FileInputStream("src/main/resources/java.png"));
+             BufferedOutputStream bufferedWriter = new BufferedOutputStream(new FileOutputStream("src/main/resources/copyJava.png", true));
+        ) {
 
-        Instant end = Instant.now();
+            copy(bufferedReader, bufferedWriter);
 
-        Duration duration = Duration.between(start, end);
+            Instant end = Instant.now();
 
-        System.out.println(duration);
+            Duration duration = Duration.between(start, end);
+
+            System.out.println(duration);
+        } catch (IOException ex) {
+            System.out.println("eroare fisier: " + ex.getMessage());
+        }
+
     }
 
 
