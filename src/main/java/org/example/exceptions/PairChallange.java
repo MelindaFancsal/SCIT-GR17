@@ -1,13 +1,22 @@
 package org.example.exceptions;
 
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 
 public class PairChallange {
     private static Logger logger = Logger.getLogger(PairChallange.class.getName());
+    static FileHandler fh = null;
 
-    public static void main(String[] args) {
-        logger.info("start main");
+    public static void main(String[] args) throws IOException {
+        fh = new FileHandler("src/main/resources/exception.log");
+        fh.setFormatter(new SimpleFormatter());
+        logger.addHandler(fh);
+
+
         /*Am manusi si sosete. Vreau sa le pun perechi.In cazul in care nu corespund numerele sau culorile la perechi,
         progrmul va returna un mesaj de eroare
          */
@@ -17,6 +26,7 @@ public class PairChallange {
         Manusa manusa1 = new Manusa(20, "verde");
         Manusa manusa2 = new Manusa(21, "rosu");
 
+        logger.info("in main: obiectele input "+ manusa1 + "  " + manusa2);
         Perechi<Manusa> verificaPerechi = new Perechi<>(manusa1, manusa2);
         try {
             verificaPerechi.verifica();
