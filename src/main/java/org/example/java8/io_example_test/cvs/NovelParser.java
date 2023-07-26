@@ -10,7 +10,8 @@ public class NovelParser extends CVSBookParser<Novel> {
     public Novel parseBook(String source) {
         String [] token = source.split(SEPARATOR);
 
-        return new Novel(token[1], token[2], TYPE.valueOf(token[3]));
+
+        return new Novel(token[2], token[1], TYPE.valueOf(token[3]));
      }
     @Override
     public String getParserType() {

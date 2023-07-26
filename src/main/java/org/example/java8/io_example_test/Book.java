@@ -1,8 +1,9 @@
 package org.example.java8.io_example_test;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public abstract class Book {
+public abstract class Book implements Serializable {
 
     private String title;
     private String author;
