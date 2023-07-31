@@ -22,18 +22,18 @@ public class ConcurancyMain {
     }
 
     private static void task4() throws InterruptedException {
-        Counter counter = new Counter();
+     //   Counter counter = new Counter();
 
         for (int i = 0; i < 10; i++) {
             new Thread(() -> {
-                counter.increment();
-                //  Counter.getInstance().increment()
+                //  counter.increment();
+                Counter.getInstance().increment();
             }).start();
 
         }
 
-        System.out.println("total count is " + counter.getCount());
-        //  System.out.println("total count is: " + Counter.getInstance().getCount());
+   //     System.out.println("total count is " + counter.getCount());
+         System.out.println("total count is: " + Counter.getInstance().getCount());
     }
 
     private static void task3_v2() throws InterruptedException {

@@ -1,16 +1,17 @@
 package org.example.concurency;
 
 import javax.sound.midi.Soundbank;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Counter {
-    private int count = 0;
+    private Integer count = 0;
     private static Counter instance = null;
 
-    public  void increment() {
+    public void increment() {
         count++;
     }
 
-    public  int getCount() {
+    public synchronized int getCount() {
         return count;
     }
 
