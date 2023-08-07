@@ -1,15 +1,15 @@
-package org.example.JDBC;
-
+package org.example.JDBC.db;
 
 import java.sql.*;
 
-public class JDBCTest {
-    public static void main(String[] args) {
+public class PostgreSQLDb {
+    public Connection connect()  {
+        Connection connection = null;
+
         try {
             Class.forName("org.postgresql.Driver").newInstance();
 
             DriverManager.setLoginTimeout(60); // wait 1 min; optional: database may be busy, good to set a higher timeout
-
             String url = new StringBuilder()
                     .append("jdbc:")
                     .append("postgresql")       // “mysql” / “db2” / “mssql” / “oracle” / ...
@@ -24,20 +24,11 @@ public class JDBCTest {
                     .append("&password=")
                     .append("melinda").toString();
 
-            try (Connection connection = DriverManager.getConnection(url);
-                 Statement s = connection.createStatement();
-                 ResultSet resultSet = s.executeQuery("SELECT * from customer;")) {
-
-                while (resultSet.next()) {
-                    System.out.println("id: " + resultSet.getInt("id") + ", name: " + resultSet.getString("last_name"));
-                }
-
-            } catch (SQLException e) {
-                System.err.println("Cannot connect to the database: " + e.getMessage());
-            }
-
-        } catch (ClassNotFoundException | RuntimeException | IllegalAccessException | InstantiationException e) {
-            System.out.println("CANNOT LOAD DRIVER");
+            connection = DriverManager.getConnection(url);
+        } catch (SQLException | ClassNotFoundException | InstantiationException | IllegalAccessException e) {
+            throw new CustomerDBException(e.getMessage());
         }
+
+        return connection;
     }
 }
