@@ -51,6 +51,12 @@ public class SQLCustomerDAOImpl implements SQLCustomerDAO {
             statement.setString(4, customer.getAddress());
 
             statement.executeUpdate();
+
+
+            Statement statementData = connection.createStatement();
+            ResultSet resultSet = statementData.executeQuery("SELECT CURRVAL('client_ids')");
+            resultSet.next();
+            customer.setId(resultSet.getInt(1));
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -65,6 +71,11 @@ public class SQLCustomerDAOImpl implements SQLCustomerDAO {
 
     @Override
     public void update(Customer customer) {
-
+        try (Connection connection = db.connect()) {
+            Statement statement = connection.createStatement();
+            statement.executeUpdate("UPDATE customer SET first_name = '" + customer.getFirstName() + "', address = '" + customer.getAddress() + "' WHERE id = " + customer.getId() + ";");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
